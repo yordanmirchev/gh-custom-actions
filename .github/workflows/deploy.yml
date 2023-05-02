@@ -37,7 +37,7 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-     - name: Load & cache dependencies  # we use the custom aciton here
+      - name: Load & cache dependencies  # we use the custom aciton here
         uses: ./.github/actions/cached-deps   # We point the folder with the aciton file, based on root.
       # If we had the action in a repository we can just reference it, for example: yordan-mirchev/my-action
       - name: Build website
