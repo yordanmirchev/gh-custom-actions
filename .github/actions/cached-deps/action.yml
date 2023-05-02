@@ -8,7 +8,7 @@ inputs:
 outputs:
   used-cache: # we choose the output name. 
     description: whether cached is used #this is required 
-    value: {{ steps.install.outputs.cache }}  #here we need an output from a step so we use the env contex
+    value: ${{ steps.install.outputs.cache }}  #here we need an output from a step so we use the env contex
 runs: #this is fixed
   using: 'composite' #this is fixed
   steps:
