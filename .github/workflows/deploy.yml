@@ -12,6 +12,8 @@ jobs:
       - name: Load & cache dependencies  # we use the custom aciton here
         uses: ./.github/actions/cached-deps   # We point the folder with the aciton file, based on root.
       # If we had the action in a repository we can just reference it, for example: yordan-mirchev/my-action
+        with:
+          caching: 'false' #we add a custom input to stop cahciong for this step. On the other places we use the default 'true'.
       - name: Lint code
         run: npm run lint
   test:

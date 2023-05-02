@@ -1,15 +1,21 @@
 name: 'Get & Cache Dependencies'
 description: 'Get the dependencies (via npm) and cache them'
+inputs:
+  caching: # we choose the input name. 
+    description: whether to use caching or not #this is required 
+    required: false #whether the input is required or not
+    default: "true" #if not required , we can add default value
 runs: #this is fixed
   using: 'composite' #this is fixed
   steps:
     - name: Cache dependencies
+      if: inputs.caching == 'true'  # access the imput. We use the if key
       id: cache
       uses: actions/cache@v3
       with:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
-      if: steps.cache.outputs.cache-hit != 'true'
+      if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true' # we add additional condition. We or (||)  check.
       run: npm ci
       shell: bash  # additional value for the custom aciton to know which shell to use
