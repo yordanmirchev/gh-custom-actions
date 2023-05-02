@@ -5,6 +5,10 @@ inputs:
     description: whether to use caching or not #this is required 
     required: false #whether the input is required or not
     default: "true" #if not required , we can add default value
+outputs:
+  used-cache: # we choose the output name. 
+    description: whether cached is used #this is required 
+    value: {{ steps.install.outputs.cache }}  #here we need an output from a step so we use the env contex
 runs: #this is fixed
   using: 'composite' #this is fixed
   steps:
@@ -16,6 +20,10 @@ runs: #this is fixed
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
+      id: install # add id to refer in the output
       if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true' # we add additional condition. We or (||)  check.
-      run: npm ci
+      run:  |   #run multiple commands
+        npm ci  
+       # echo "cache=${{ inputs.caching }}" >> $GITHUB_OUTPUT  #new syntax
+       "::set-output name=cache::'${{ inputs.caching }}'"
       shell: bash  # additional value for the custom aciton to know which shell to use
