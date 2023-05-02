@@ -24,6 +24,6 @@ runs: #this is fixed
       if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true' # we add additional condition. We or (||)  check.
       run:  |   #run multiple commands
         npm ci  
-       # echo "cache=${{ inputs.caching }}" >> $GITHUB_OUTPUT  #new syntax
-       "::set-output name=cache::'${{ inputs.caching }}'"
+        echo "cache=${{ inputs.caching }}" >> $GITHUB_OUTPUT  #new syntax
+       #"::set-output name=cache::'${{ inputs.caching }}'"
       shell: bash  # additional value for the custom aciton to know which shell to use
