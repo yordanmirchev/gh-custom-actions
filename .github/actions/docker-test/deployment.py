@@ -12,7 +12,9 @@ def run():
     with open(os.environ['GITHUB_OUTPUT'], 'a') as gh_output:
         print(f'action_result={result}', file=gh_output)
 
-    print(f'result is: \n{result}')
+    #print(f'result is: \n{result}')
+    with open("output_result", mode="w") as data:
+        data.write(str(result))
 
 if __name__ == '__main__':
     run()
