@@ -17,6 +17,11 @@ jobs:
         uses: ./.github/actions/docker-test #we provide the path to the  action folder
         with:
           user-input: hi-docker
+      - name: Upload results
+        uses: actions/upload-artifact@v3
+        with:
+          name: result_file
+          path: output_result
       - name: Output information
         run: |
           echo "User input and enviornment: ${{ steps.runDocker.outputs.action_result }}"
