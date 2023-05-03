@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Run custom docker action
         id: runDocker
-        uses: ./.github/actions/docker-test #we provide the path to the  action folder
+        uses: yordanmirchev/gh-custom-action@v1 #use actions repo
         with:
           user-input: hi-docker
       - name: Upload results
