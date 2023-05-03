@@ -1,0 +1,17 @@
+name: Docker Test
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+jobs:
+  information:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code # we need to have this step in order to get the code and the files for the action.
+      # As this is a local action, if it was on a repository, this is not needed.
+      # If we don't get the code we'll get an error like : 'Error: Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under ...'
+        uses: actions/checkout@v3
+      - name: Run custom docker action
+        uses: ./.github/actions/docker-test #we provide the path to the  action folder
+
