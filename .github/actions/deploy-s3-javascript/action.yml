@@ -1,0 +1,6 @@
+name: 'Deploy to AWS S3'
+description: 'Deploy a static website via AWS S3.'
+runs:
+  using: 'node16'  # we now show it is a js action as we provide node
+  main: main.js  #the main.js name is up to us. This is the file that we'll be executed. We provide the path to it, in this case it is in the same folder so nothing is added.
+
