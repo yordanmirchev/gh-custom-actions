@@ -5,7 +5,7 @@ on:
       - master
   workflow_dispatch:
 jobs:
-  Test job:
+  DockerJob:
     runs-on: ubuntu-latest
     steps:
       - name: Get code # we need to have this step in order to get the code and the files for the action.
