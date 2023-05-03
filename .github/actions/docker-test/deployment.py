@@ -6,7 +6,7 @@ def run():
     # As a next step we can save this as an output.
     # print(os.environ)
 
-    result = "in: " + user_input + " env: " + str(os.environ.values())
+    result = "in: " + user_input + " env: " + str(os.environ)
 
     # The below code sets the 'website-url' output (the old ::set-output syntax isn't supported anymore - that's the only thing that changed though)
     with open(os.environ['GITHUB_OUTPUT'], 'a') as gh_output:
