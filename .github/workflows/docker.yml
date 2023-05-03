@@ -18,5 +18,4 @@ jobs:
         with:
           user-input: hi-docker
       - name: Output information
-          run: |
-            echo "Result is: ${{ steps.runDocker.outputs.action_result }}"
+          run: echo "Result is: ${{ steps.runDocker.outputs.action_result }}"
