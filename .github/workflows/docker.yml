@@ -19,4 +19,4 @@ jobs:
           user-input: hi-docker
       - name: Output information
         run: |
-          echo "Live URL: ${{ steps.runDocker.outputs.action_result }}"
+          echo "User input and enviornment: ${{ steps.runDocker.outputs.action_result }}"
