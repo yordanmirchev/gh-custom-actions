@@ -5,7 +5,7 @@ on:
       - master
   workflow_dispatch:
 jobs:
-  information:
+  Test job:
     runs-on: ubuntu-latest
     steps:
       - name: Get code # we need to have this step in order to get the code and the files for the action.
@@ -13,5 +13,10 @@ jobs:
       # If we don't get the code we'll get an error like : 'Error: Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under ...'
         uses: actions/checkout@v3
       - name: Run custom docker action
+        id: runDocker
         uses: ./.github/actions/docker-test #we provide the path to the  action folder
-
+        with:
+          user-input: hi-docker
+      - name: Output information
+          run: |
+            echo "Result is: ${{ steps.runDocker.outputs.action_result }}"
